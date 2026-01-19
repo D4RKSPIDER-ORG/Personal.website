@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nyxen Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      overscroll-behavior: none;
+    }
+
+    body {
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    /* LOADING SCREEN */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .loader-circle {
+      width: 60px;
+      height: 60px;
+      border: 6px solid #333;
+      border-top-color: #a855f7;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* GPU Boost */
+    .gpu {
+      transform: translateZ(0);
+      will-change: transform, opacity;
+    }
+
+    /* Smooth Fade Up */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      filter: blur(4px);
+      transition: opacity .9s ease, transform .9s ease, filter .9s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    /* Hero Float */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* Parallax BG */
+    .parallax-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+  </style>
+</head>
+
+<body class="bg-[#0a0a0f] text-gray-200 font-sans overflow-x-hidden">
+
+  <!-- LOADING SCREEN -->
+  <div id="loader">
+    <div class="loader-circle"></div>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative h-screen flex flex-col justify-center items-center text-center px-6">
+
+    <div class="parallax-bg" id="parallax"
+      style="background-image: url('images/hero.jpg'); filter: brightness(0.4);">
+    </div>
+
+    <h1 class="text-6xl md:text-7xl font-extrabold text-white drop-shadow-2xl mb-4 float gpu reveal">
+      Nyxen Studio
+    </h1>
+
+    <p class="max-w-xl text-lg md:text-2xl text-gray-300 gpu reveal"
+      style="transition-delay: .2s;">
+      Anime-crafted aesthetics forged for the web.
+    </p>
+
+    <a href="#services"
+      class="mt-8 px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl shadow-lg transition gpu reveal"
+      style="transition-delay: .4s;">
+      Enter the Realm
+    </a>
+
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-24 px-6 bg-[#0d0d14]">
+    <h2 class="text-4xl font-bold text-center mb-16 reveal">Services</h2>
+
+    <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+
+      <div class="p-8 rounded-3xl bg-[#1a1a25] shadow-xl hover:scale-[1.03] transition gpu reveal">
+        <img src="images/service1.jpg" class="w-full h-40 object-cover rounded-xl mb-4" />
+        <h3 class="text-2xl font-semibold mb-2">Anime Web Design</h3>
+        <p class="text-gray-400">Precision. Minimalism. Aesthetic storytelling.</p>
+      </div>
+
+      <div class="p-8 rounded-3xl bg-[#1a1a25] shadow-xl hover:scale-[1.03] transition gpu reveal">
+        <img src="images/service2.jpg" class="w-full h-40 object-cover rounded-xl mb-4" />
+        <h3 class="text-2xl font-semibold mb-2">Full Stack Dev</h3>
+        <p class="text-gray-400">Speed and structure without compromise.</p>
+      </div>
+
+      <div class="p-8 rounded-3xl bg-[#1a1a25] shadow-xl hover:scale-[1.03] transition gpu reveal">
+        <img src="images/service3.jpg" class="w-full h-40 object-cover rounded-xl mb-4" />
+        <h3 class="text-2xl font-semibold mb-2">Landing Pages</h3>
+        <p class="text-gray-400">Conversion wrapped in anime energy.</p>
+      </div>
+
+      <div class="p-8 rounded-3xl bg-[#1a1a25] shadow-xl hover:scale-[1.03] transition gpu reveal">
+        <img src="images/service4.jpg" class="w-full h-40 object-cover rounded-xl mb-4" />
+        <h3 class="text-2xl font-semibold mb-2">WordPress Setup</h3>
+        <p class="text-gray-400">Themes, plugins, configs, mastery.</p>
+      </div>
+
+      <div class="p-8 rounded-3xl bg-[#1a1a25] shadow-xl hover:scale-[1.03] transition gpu reveal">
+        <img src="images/service5.png" class="w-full h-40 object-cover rounded-xl mb-4" />
+        <h3 class="text-2xl font-semibold mb-2">Optimization</h3>
+        <p class="text-gray-400">CLS, Core WebVitals, speed sorcery.</p>
+      </div>
+
+      <div class="p-8 rounded-3xl bg-[#1a1a25] shadow-xl hover:scale-[1.03] transition gpu reveal">
+        <img src="images/service6.jpg" class="w-full h-40 object-cover rounded-xl mb-4" />
+        <h3 class="text-2xl font-semibold mb-2">Bug Fixing</h3>
+        <p class="text-gray-400">UI glitches slain. Errors exorcised.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-24 px-6 bg-[#0a0a0f]">
+    <h2 class="text-4xl font-bold text-center mb-12 reveal">Contact</h2>
+
+    <form action="https://formspree.io/f/myzawkpz" method="POST"
+      class="max-w-xl mx-auto bg-[#1a1a25] p-8 rounded-3xl shadow-xl reveal gpu">
+
+      <input name="name" placeholder="Name"
+        class="w-full mb-4 p-3 bg-[#11111a] border border-gray-700 rounded-xl text-gray-200" required />
+
+      <input type="email" name="email" placeholder="Email"
+        class="w-full mb-4 p-3 bg-[#11111a] border border-gray-700 rounded-xl text-gray-200" required />
+
+      <textarea name="message" placeholder="Message"
+        class="w-full mb-4 p-3 bg-[#11111a] border border-gray-700 rounded-xl h-32 text-gray-200" required></textarea>
+
+      <button type="submit"
+        class="w-full py-3 bg-purple-600 hover:bg-purple-700 rounded-xl text-white transition">
+        Send Message
+      </button>
+    </form>
+  </section>
+
+  <footer class="text-center py-6 text-gray-500 bg-[#0d0d14] text-sm">
+    © 2025 Nyxen Studio
+  </footer>
+
+  <script>
+    /* LOADER */
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("loader").style.opacity = "0";
+        setTimeout(() => {
+          document.getElementById("loader").style.display = "none";
+          document.body.style.opacity = "1";
+        }, 500);
+      }, 1500); // loading duration
+    });
+
+    /* Scroll reveal */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    /* Parallax */
+    const parallax = document.getElementById("parallax");
+    window.addEventListener("scroll", () => {
+      let offset = window.pageYOffset * 0.25;
+      parallax.style.transform = `translateY(${offset}px)`;
+    });
+  </script>
+
+</body>
+</html>
